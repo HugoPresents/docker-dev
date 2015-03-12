@@ -12,10 +12,15 @@ COPY etc/apt/sources.list /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y
 
 # install packages
-RUN apt-get install mysql-server php5 php5-cli php5-fpm php5-mysqlnd php5-mcrypt php5-gd nginx
+RUN apt-get install -y mysql-server php5 php5-cli php5-fpm php5-mysqlnd php5-mcrypt php5-gd nginx
 
 # change timezone
 COPY etc/timezone /etc/timezone
 
+# add startup script
+ADD startup.sh /opt/startup.sh
+
 # access ports
 EXPOSE 80 443 3306
+
+CMD /opt/startup.sh
