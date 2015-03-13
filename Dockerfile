@@ -12,7 +12,13 @@ COPY etc/apt/sources.list /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y
 
 # install packages
-RUN apt-get install -y mysql-server php5 php5-cli php5-fpm php5-mysqlnd php5-mcrypt php5-gd nginx
+#RUN apt-get install -y mysql-server php5 php5-cli php5-fpm php5-mysqlnd php5-mcrypt php5-gd nginx
+RUN apt-get install -y nginx
+
+# access mysql from remote
+RUN sed -i -e "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
+RUN /usr/sbin/mysqld
+
 
 # change timezone
 COPY etc/timezone /etc/timezone
