@@ -1,2 +1,4 @@
 /nginx/var/log/nginx/*
 !/nginx/var/log/nginx/.gitkeep
+/php-fpm/var/log/*
+!/php-fpm/var/log/.gitkeep

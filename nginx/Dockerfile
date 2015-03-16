@@ -8,8 +8,6 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
-# define volumes
-VOLUME ["/etc/nginx/sites-available", "/etc/nginx/sites-enabled", "/var/log/nginx", "/var/htdocs"]
 
 # access ports
 EXPOSE 80 443
