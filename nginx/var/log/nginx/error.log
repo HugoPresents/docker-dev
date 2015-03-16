@@ -1,5 +1,0 @@
-2015/03/15 11:35:30 [error] 5#0: *1 "/var/var/index.html" is not found (2: No such file or directory), client: 172.17.42.1, server: , request: "GET / HTTP/1.1", host: "127.0.0.1:8888"
-2015/03/15 11:36:06 [error] 5#0: *2 "/var/var/index.html" is not found (2: No such file or directory), client: 172.17.42.1, server: , request: "GET / HTTP/1.1", host: "127.0.0.1:8888"
-2015/03/15 11:36:42 [error] 5#0: *3 "/var/var/index.html" is not found (2: No such file or directory), client: 192.168.59.3, server: , request: "GET / HTTP/1.1", host: "192.168.59.103:8888"
-2015/03/15 11:36:42 [error] 5#0: *3 open() "/var/var/favicon.ico" failed (2: No such file or directory), client: 192.168.59.3, server: , request: "GET /favicon.ico HTTP/1.1", host: "192.168.59.103:8888"
-2015/03/15 11:57:25 [error] 15#0: *1 open() "/var/htdocs/favicon.ico" failed (2: No such file or directory), client: 192.168.59.3, server: , request: "GET /favicon.ico HTTP/1.1", host: "192.168.59.103:8888"
