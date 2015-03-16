@@ -1,0 +1,2 @@
+/nginx/var/log/nginx/*
+!/nginx/var/log/nginx/.gitkeep
