@@ -5,4 +5,5 @@ docker run -d\
     -v $PWD/etc/nginx/sites-enabled:/etc/nginx/sites-enabled\
     -v $PWD/var/htdocs:/var/htdocs\
     -v $PWD/var/log/nginx:/var/log/nginx\
+    --name="nginx"\
     nginx

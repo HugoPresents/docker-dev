@@ -1,24 +1,10 @@
 # VERSION 0.0.1
-FROM ubuntu:14.04.2
+FROM rabbit52/ubuntu
 MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
-
-# backup original repo address
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak
-
-# replace repo address
-COPY sources.list /etc/apt/sources.list
-
-# update & upgrade packages
-RUN apt-get update && apt-get upgrade -y
 
 # install packages
 RUN apt-get install -y nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-
-# change timezone
-RUN echo Asia/Chongqing /etc/timezone
-
-# add startup script
 
 RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
