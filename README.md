@@ -16,4 +16,4 @@ subdirectories is some server based on this image like nginx
 - `build.sh` for build images
 - `boot.sh` for start container
 - `startup.sh` for execute inside container after started
-- empty directory for container volumns
+- empty directory for container volumes
