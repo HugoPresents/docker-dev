@@ -2,3 +2,7 @@
 !/nginx/var/log/nginx/.gitkeep
 /php-fpm/var/log/*
 !/php-fpm/var/log/.gitkeep
+/mysql/var/lib/mysql/*
+!/mysql/var/lib/mysql/.gitkeep
+/mysql/var/log/mysql/*
+!/mysql/var/log/mysql/.gitkeep
