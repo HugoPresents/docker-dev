@@ -1,0 +1,94 @@
+server {
+    listen 80;
+    server_name op.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/terp/op/public;
+    error_log /var/log/nginx/tff/terp.error.log;
+
+    index index.html backend.php;
+
+    location / {
+        try_files $uri $uri/ /backend.php?_url=$uri&$args;
+    }
+
+    location ~ backend\.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php-fpm:9000;
+        fastcgi_param YII_ENV tuzki;
+        include fastcgi_params;
+    }
+}
+
+server {
+    listen 80; 
+    server_name auth.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/terp/auth/public;
+    error_log /var/log/nginx/tff/auth.error.log;
+    include phalcon;
+}
+
+server {
+    listen 80; 
+    server_name deploy.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/deployment/public;
+    error_log /var/log/nginx/tff/deployment.error.log;
+
+    index index.html index.php;
+
+    location /services/ {
+        send_timeout 2m;
+        rewrite /services/(.*) /$1 break;
+        proxy_pass http://10.0.2.2:8888;
+    }
+
+    include phalcon;
+}
+
+server {
+    server_name affiliate.services.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/tsvcs/affiliate/public;
+    error_log /var/log/nginx/tff/tsvcs.error.log;
+    include phalcon;
+}
+
+server {
+    server_name content.services.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/tsvcs/content/public;
+    error_log /var/log/nginx/tff/tsvcs.error.log;
+    include phalcon;
+}
+
+server {
+    server_name order.services.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/tsvcs/order/public;
+    error_log /var/log/nginx/tff/tsvcs.error.log;
+    include phalcon;
+}
+
+server {
+    server_name product.services.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/tsvcs/product/public;
+    error_log /var/log/nginx/tff/tsvcs.error.log;
+    include phalcon;
+}
+
+server {
+    server_name provider.services.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/tsvcs/provider/public;
+    error_log /var/log/nginx/tff/tsvcs.error.log;
+    include phalcon;
+}
+
+server {
+    server_name resource.services.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/tsvcs/resource/public;
+    error_log /var/log/nginx/tff/tsvcs.error.log;
+    include phalcon;
+}
+
+server {
+    server_name user.services.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/tsvcs/user/public;
+    error_log /var/log/nginx/tff/tsvcs.error.log;
+    include phalcon;
+}
+

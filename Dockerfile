@@ -15,7 +15,7 @@ deb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe
 deb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse" > /etc/apt/sources.list
 
 # update & upgrade packages
-RUN apt-get update && apt-get upgrade -y && apt-get install -y curl
+RUN apt-get update && apt-get upgrade -y && apt-get install -y curl vim
 
 # change localtime
 RUN cp /usr/share/zoneinfo/Asia/Chongqing /etc/localtime

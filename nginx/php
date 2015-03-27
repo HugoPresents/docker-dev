@@ -1,0 +1,4 @@
+location ~ \.php$ {
+    fastcgi_pass php-fpm:9000;
+    include fastcgi_params;
+}

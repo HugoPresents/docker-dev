@@ -3,9 +3,29 @@ FROM rabbit52/ubuntu
 MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 # install packages
-RUN apt-get update && apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev
 
-RUN sed -i "s/\/var\/run\/php5-fpm.sock/0.0.0.0:9000/" /etc/php5/fpm/pool.d/www.conf
+RUN apt-get update && \
+apt-get upgrade -y && \
+apt-get install -y software-properties-common && \
+apt-add-repository -y ppa:phalcon/stable && \
+apt-get update && \
+apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-phalcon libyaml-dev && \
+pecl install yaml
+
+# connfiguration
+RUN sed -E -i "s/^listen.+?$/listen = 0.0.0.0:9000/" /etc/php5/fpm/pool.d/www.conf
+RUN sed -E -i "s/^post_max_size.+?$/post_max_size = 100M/" /etc/php5/fpm/php.ini
+RUN sed -E -i "s/^upload_max_filesize.+?$/upload_max_filesize = 100M/" /etc/php5/fpm/php.ini
+
+RUN touch /etc/php5/mods-available/yaml.ini && \
+echo "extension=yaml.so" > /etc/php5/mods-available/yaml.ini && \
+php5enmod yaml
+
+# for development
+RUN sed -E -i "s/^display_errors.+?$/display_errors = On/" /etc/php5/fpm/php.ini
+RUN sed -E -i "s/^error_reporting.+?$/error_reporting = E_ALL/" /etc/php5/fpm/php.ini
+COPY phpunit /usr/local/bin/phpunit
+
 
 RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
