@@ -14,6 +14,10 @@ pecl install yaml
 
 # connfiguration
 RUN sed -E -i "s/^listen.+?$/listen = 0.0.0.0:9000/" /etc/php5/fpm/pool.d/www.conf
+RUN sed -E -i "s/^pm\.max_children.+?$/pm\.max_children=10/" /etc/php5/fpm/pool.d/www.conf
+RUN sed -E -i "s/^pm\.start_servers.+?$/pm\.start_servers=4/" /etc/php5/fpm/pool.d/www.conf
+RUN sed -E -i "s/^pm\.min_spare_servers.+?$/pm\.min_spare_servers=2/" /etc/php5/fpm/pool.d/www.conf
+RUN sed -E -i "s/^pm\.max_spare_servers.+?$/pm\.max_spare_servers=6/" /etc/php5/fpm/pool.d/www.conf
 RUN sed -E -i "s/^post_max_size.+?$/post_max_size = 100M/" /etc/php5/fpm/php.ini
 RUN sed -E -i "s/^upload_max_filesize.+?$/upload_max_filesize = 100M/" /etc/php5/fpm/php.ini
 
