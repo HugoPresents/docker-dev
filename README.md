@@ -14,6 +14,7 @@ subdirectories is some server based on this image like nginx
 
 ## usage
 - `build.sh` for build images
-- `boot.sh` for start container
-- `startup.sh` for execute inside container after started
+- `start.sh` for start containers
+- `stop.sh` form stop containers
+- `startup.sh` for docker CMD
 - empty directory for container volumes
