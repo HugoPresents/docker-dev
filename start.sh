@@ -19,6 +19,8 @@ docker run -d\
 echo "start nginx..."
 docker run -d\
     -p 80:80\
+    -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d\
+    -v $PWD/etc/nginx/includes:/etc/nginx/includes\
     -v $PWD/etc/nginx/sites-available:/etc/nginx/sites-available\
     -v $PWD/etc/nginx/sites-enabled:/etc/nginx/sites-enabled\
     -v ~/htdocs:/var/htdocs\
