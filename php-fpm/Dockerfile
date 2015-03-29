@@ -9,7 +9,7 @@ apt-get upgrade -y && \
 apt-get install -y software-properties-common && \
 apt-add-repository -y ppa:phalcon/stable && \
 apt-get update && \
-apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-phalcon libyaml-dev && \
+apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-phalcon libyaml-dev git-core && \
 pecl install yaml
 
 # connfiguration
