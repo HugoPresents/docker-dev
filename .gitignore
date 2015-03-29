@@ -3,6 +3,7 @@
 /var/log/mysql/*
 /var/log/nginx/tff/*
 /var/lib/mysql/*
+!/var/log/nginx/tff
 !/var/log/nginx
 !/var/log/mysql
 !/var/log/nginx/.gitkeep
