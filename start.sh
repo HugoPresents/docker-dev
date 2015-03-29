@@ -10,7 +10,8 @@ docker run -d\
 echo "start php-fpm..."
 docker run -d\
     -v $PWD/var/log:/var/log\
-    -v /Users/tuzki/htdocs:/var/htdocs\
+    -v ~/htdocs:/var/htdocs\
+    -v $PWD/usr/local/bin:/usr/local/bin\
     --name php-fpm\
     --link mysql:mysql\
     php-fpm
@@ -20,7 +21,7 @@ docker run -d\
     -p 80:80\
     -v $PWD/etc/nginx/sites-available:/etc/nginx/sites-available\
     -v $PWD/etc/nginx/sites-enabled:/etc/nginx/sites-enabled\
-    -v /Users/tuzki/htdocs:/var/htdocs\
+    -v ~/htdocs:/var/htdocs\
     -v $PWD/var/log/nginx:/var/log/nginx\
     --name nginx\
     --link php-fpm:php-fpm\
