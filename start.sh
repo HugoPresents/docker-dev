@@ -9,6 +9,7 @@ docker run -d\
 
 echo "start php-fpm..."
 docker run -d\
+    -p 9000:9000\
     -v $PWD/var/log:/var/log\
     -v ~/htdocs:/var/htdocs\
     -v $PWD/usr/local/bin:/usr/local/bin\
@@ -26,5 +27,4 @@ docker run -d\
     -v ~/htdocs:/var/htdocs\
     -v $PWD/var/log/nginx:/var/log/nginx\
     --name nginx\
-    --link php-fpm:php-fpm\
     nginx
