@@ -13,6 +13,6 @@ RUN sed -E -i "s/^user.+?$/user = root/" /etc/mysql/my.cnf
 # access ports
 EXPOSE 3306
 
-ADD startup.sh /opt/startup.sh
+COPY startup.sh /opt/startup.sh
 
 CMD /opt/startup.sh
