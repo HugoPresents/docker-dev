@@ -23,7 +23,7 @@ RUN sed -E -i "s/^upload_max_filesize.+?$/upload_max_filesize = 100M/" /etc/php5
 
 RUN touch /etc/php5/mods-available/yaml.ini && \
 echo "extension=yaml.so" > /etc/php5/mods-available/yaml.ini && \
-php5enmod yaml
+php5enmod yaml mcrypt
 
 # for development
 RUN sed -E -i "s/^display_errors.+?$/display_errors = On/" /etc/php5/fpm/php.ini

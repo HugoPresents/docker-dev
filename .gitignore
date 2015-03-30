@@ -1,13 +1,10 @@
+.composer/cache/*
 /var/log/*
 /var/log/nginx/*
 /var/log/mysql/*
 /var/log/nginx/tff/*
 /var/lib/mysql/*
+!.gitkeep
 !/var/log/nginx/tff
 !/var/log/nginx
 !/var/log/mysql
-!/var/log/nginx/.gitkeep
-!/var/log/nginx/tff/.gitkeep
-!/var/log/.gitkeep
-!/var/log/mysql/.gitkeep
-!/var/lib/mysql/.gitkeep
