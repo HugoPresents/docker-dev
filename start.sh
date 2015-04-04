@@ -15,7 +15,6 @@ docker run -d\
     -v ~/htdocs:/var/htdocs\
     -v $PWD/usr/local/bin:/usr/local/bin\
     --name php-fpm\
-    --link mysql:mysql\
     php-fpm
 
 echo "start nginx..."
