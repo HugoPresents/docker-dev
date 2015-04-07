@@ -1,5 +1,5 @@
 #/bin/sh
 echo "stop containers..."
-docker stop nginx php-fpm mysql
+docker stop nginx php-fpm
 echo "delete containers..."
-docker rm nginx php-fpm mysql
+docker rm nginx php-fpm

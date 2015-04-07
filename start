@@ -1,12 +1,4 @@
 #!/bin/sh
-echo "start mysql..."
-docker run -d\
-    -p 3306:3306\
-    -v $PWD/var/lib/mysql:/var/lib/mysql\
-    -v $PWD/var/log/mysql:/var/log/mysql\
-    --name mysql\
-    mysql
-
 echo "start php-fpm..."
 docker run -d\
     -p 9000:9000\
