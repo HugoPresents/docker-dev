@@ -1,0 +1,39 @@
+server {
+    server_name obs.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/terp/obs/public;
+    error_log /var/log/nginx/obs_error.log;
+
+    index index.html backend.php;
+
+    location / {
+        try_files $uri $uri/ /backend.php?_url=$uri&$args;
+    }
+
+    location ~ backend\.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 172.17.42.1:9000;
+        fastcgi_param YII_ENV tuzki;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+    }
+}
+
+server {
+    server_name obs-tool.tuzki.tff.com;
+    root /var/htdocs/obs-tool/public;
+    error_log /var/log/nginx/obs_error.log;
+
+    index webtools.php;
+
+    location / {
+        try_files $uri $uri/ /webtools.php?_url=$uri&$args;
+    }
+
+    location ~ webtools\.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 172.17.42.1:9000;
+        fastcgi_param YII_ENV tuzki;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+    }
+}

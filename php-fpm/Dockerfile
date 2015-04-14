@@ -9,7 +9,7 @@ apt-get upgrade -y && \
 apt-get install -y software-properties-common && \
 apt-add-repository -y ppa:phalcon/stable && \
 apt-get update && \
-apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-phalcon libyaml-dev git-core && \
+apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-phalcon php5-pgsql libyaml-dev git-core && \
 pecl install yaml
 
 # connfiguration
@@ -24,6 +24,10 @@ RUN sed -E -i "s/^upload_max_filesize.+?$/upload_max_filesize = 100M/" /etc/php5
 RUN touch /etc/php5/mods-available/yaml.ini && \
 echo "extension=yaml.so" > /etc/php5/mods-available/yaml.ini && \
 php5enmod yaml mcrypt
+
+# phalcon alias
+RUN touch /root/.bash_aliases && \
+echo "alias phalcon='/var/htdocs/ide-helper/phalcon-devtools/phalcon.php'" > /root/.bash_aliases
 
 # for development
 RUN sed -E -i "s/^display_errors.+?$/display_errors = On/" /etc/php5/fpm/php.ini
