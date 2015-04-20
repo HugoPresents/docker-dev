@@ -6,11 +6,17 @@ MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 RUN apt-get update && \
 apt-get upgrade -y && \
-apt-get install -y software-properties-common && \
-apt-add-repository -y ppa:phalcon/stable && \
-apt-get update && \
-apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-phalcon php5-pgsql libyaml-dev git-core && \
+apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-pgsql libyaml-dev git-core gcc libpcre3-dev && \
 pecl install yaml
+
+# build phalcon
+RUN cd /tmp && \
+git clone --depth=1 git://github.com/phalcon/cphalcon.git && \
+cd cphalcon/build && \
+./install && \
+touch /etc/php5/mods-available/phalcon.ini && \
+echo '[phalcon]\nextension=phalcon.so' > /etc/php5/mods-available/phalcon.ini && \
+rm -rf /tmp/cphalcon
 
 # connfiguration
 RUN sed -E -i "s/^listen.+?$/listen = 0.0.0.0:9000/" /etc/php5/fpm/pool.d/www.conf
@@ -23,7 +29,7 @@ RUN sed -E -i "s/^upload_max_filesize.+?$/upload_max_filesize = 100M/" /etc/php5
 
 RUN touch /etc/php5/mods-available/yaml.ini && \
 echo "extension=yaml.so" > /etc/php5/mods-available/yaml.ini && \
-php5enmod yaml mcrypt
+php5enmod yaml mcrypt phalcon
 
 # phalcon alias
 RUN touch /root/.bash_aliases && \
