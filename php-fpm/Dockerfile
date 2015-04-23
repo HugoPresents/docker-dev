@@ -6,7 +6,7 @@ MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 RUN apt-get update && \
 apt-get upgrade -y && \
-apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-pgsql libyaml-dev git-core gcc libpcre3-dev && \
+apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-pgsql php5-memcached libyaml-dev git-core gcc libpcre3-dev && \
 pecl install yaml
 
 # build phalcon
