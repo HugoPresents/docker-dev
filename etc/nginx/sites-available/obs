@@ -3,13 +3,13 @@ server {
     root /var/htdocs/tff-refactor/terp/obs/public;
     error_log /var/log/nginx/tff/obs_error.log;
 
-    index index.html backend.php;
+    index index.html index.php;
 
     location / {
-        try_files $uri $uri/ /backend.php?_url=$uri&$args;
+        try_files $uri $uri/ /index.php?_url=$uri&$args;
     }
 
-    location ~ backend\.php$ {
+    location ~ index\.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass 172.17.42.1:9000;
         fastcgi_param YII_ENV tuzki;
