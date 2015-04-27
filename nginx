@@ -1,14 +1,4 @@
 #!/bin/sh
-echo "start php-fpm..."
-docker run -d\
-    -p 9000:9000\
-    -v $PWD/var/log:/var/log\
-    -v $PWD/.composer:/root/.composer\
-    -v ~/htdocs:/var/htdocs\
-    -v $PWD/usr/local/bin:/usr/local/bin\
-    --name php-fpm\
-    php-fpm
-
 echo "start nginx..."
 docker run -d\
     -p 80:80\

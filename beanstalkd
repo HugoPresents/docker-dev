@@ -1,2 +1,3 @@
 #!/bin/sh
+echo "start beanstalkd..."
 docker run -d -p 11300:11300 --name beanstalkd kdihalas/beanstalkd
