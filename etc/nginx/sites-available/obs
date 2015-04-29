@@ -1,7 +1,7 @@
 server {
     server_name obs.tuzki.tff.com;
     root /var/htdocs/tff-refactor/terp/obs/public;
-    error_log /var/log/nginx/tff/obs_error.log;
+    error_log /var/log/nginx/tff/obs.error.log;
 
     index index.html index.php;
 
@@ -21,7 +21,7 @@ server {
 server {
     server_name obs-tool.tuzki.tff.com;
     root /var/htdocs/obs-tool/public;
-    error_log /var/log/nginx/tff/obs_error.log;
+    error_log /var/log/nginx/tff/obs.error.log;
 
     index webtools.php;
 

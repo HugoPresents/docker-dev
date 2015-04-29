@@ -1,0 +1,15 @@
+server {
+    server_name admin.tuzki.tff.com;
+    root /var/htdocs/TFF/admin;
+    index index.html index.htm index.php;
+    error_log /var/log/nginx/tff/tff.error.log;
+    try_files $uri $uri/ /index.php?$args;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 172.17.42.1:9000;
+        fastcgi_param TFF_ENV tuzki;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+    }
+}

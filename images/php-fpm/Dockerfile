@@ -37,7 +37,7 @@ echo "alias phalcon='/var/htdocs/ide-helper/phalcon-devtools/phalcon.php'" > /ro
 
 # for development
 RUN sed -E -i "s/^display_errors.+?$/display_errors = On/" /etc/php5/fpm/php.ini
-RUN sed -E -i "s/^error_reporting.+?$/error_reporting = E_ALL/" /etc/php5/fpm/php.ini
+RUN sed -E -i "s/^error_reporting.+?$/error_reporting = E_ALL \& \~E_DEPRECATED \& \~E_STRICT \& \~E_NOTICE/" /etc/php5/fpm/php.ini
 
 RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
