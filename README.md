@@ -10,11 +10,9 @@ for Chinese Developer
 
 ## extra
 
-subdirectories is some server based on this image like nginx
+`images` directory is some images based on this image like `nginx`, `php-fpm`
 
 ## usage
+- executable under root directory are boot container which as name is, such as `redis`, `postgresql`
 - `build.sh` for build images
-- `start.sh` for start containers
-- `stop.sh` form stop containers
-- `startup.sh` for docker CMD
-- empty directory for container volumes
+- empty directories are container depended volumes dir
