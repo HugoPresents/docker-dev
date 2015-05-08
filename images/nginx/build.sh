@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t nginx .
+docker build -t rabbit52/nginx .

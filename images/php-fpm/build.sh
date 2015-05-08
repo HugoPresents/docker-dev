@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t php-fpm .
+docker build -t rabbit52/php-fpm .

@@ -9,4 +9,4 @@ docker run -d\
     -v ~/htdocs:/var/htdocs\
     -v $PWD/var/log/nginx:/var/log/nginx\
     --name nginx\
-    nginx
+    rabbit52/nginx
