@@ -1,6 +1,6 @@
 server {
     server_name admin.tuzki.tff.com;
-    root /var/htdocs/TFF/admin;
+    root /var/htdocs/tff/admin;
     index index.html index.htm index.php;
     error_log /var/log/nginx/tff/tff.error.log;
     try_files $uri $uri/ /index.php?$args;
