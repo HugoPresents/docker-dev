@@ -1,6 +1,6 @@
 server {
     server_name obs.tuzki.tff.com;
-    root /var/htdocs/tff-refactor/terp/obs/public;
+    root /var/htdocs/tff-refactor/obs/public;
     error_log /var/log/nginx/tff/obs.error.log;
 
     index index.html index.php;
