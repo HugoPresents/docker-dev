@@ -1,5 +1,4 @@
 server {
-    listen 80;
     server_name op.tuzki.tff.com;
     root /var/htdocs/tff-refactor/terp/op/public;
     error_log /var/log/nginx/tff/terp.error.log;
@@ -20,7 +19,6 @@ server {
 }
 
 server {
-    listen 80; 
     server_name auth.tuzki.tff.com;
     root /var/htdocs/tff-refactor/terp/auth/public;
     error_log /var/log/nginx/tff/auth.error.log;
@@ -28,7 +26,6 @@ server {
 }
 
 server {
-    listen 80; 
     server_name deploy.tuzki.tff.com;
     root /var/htdocs/tff-refactor/deployment/public;
     error_log /var/log/nginx/tff/deployment.error.log;
@@ -51,6 +48,26 @@ server {
         send_timeout 2m;
         rewrite /services/(.*) /$1 break;
         proxy_pass http://10.0.2.2:8888;
+    }
+}
+
+server {
+    server_name trest.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/trest/public;
+    error_log /var/log/nginx/tff/trest.error.log;
+
+    index index.html index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?_url=$uri&$args;
+    }
+
+    location ~ index\.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 172.17.42.1:9000;
+        fastcgi_param YII_ENV tuzki;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
     }
 }
 
