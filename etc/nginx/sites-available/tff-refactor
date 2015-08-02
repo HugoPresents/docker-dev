@@ -32,6 +32,11 @@ server {
 
     index index.html index.php;
 
+    location /services/ {
+        rewrite /services/(.*) /$1 break;
+        proxy_pass http://10.0.2.2:8888;
+    }
+
     location / {
         try_files $uri $uri/ /index.php?_url=$uri&$args;
     }
@@ -39,15 +44,9 @@ server {
     location ~ index\.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass 172.17.42.1:9000;
-        fastcgi_param YII_ENV tuzki;
+        fastcgi_param TFF_ENV tuzki;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $request_filename;
-    }
-
-    location /services/ {
-        send_timeout 2m;
-        rewrite /services/(.*) /$1 break;
-        proxy_pass http://10.0.2.2:8888;
     }
 }
 
