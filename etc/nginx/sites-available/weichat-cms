@@ -15,4 +15,11 @@ server {
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $request_filename;
     }
+
+    location ~ ueditor/php/.+?\.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 172.17.42.1:9000;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+    }
 }
