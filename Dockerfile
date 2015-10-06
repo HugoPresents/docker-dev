@@ -1,5 +1,5 @@
 # VERSION 0.0.1
-FROM ubuntu:14.04.2
+FROM ubuntu:latest
 MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 # replace repo address
