@@ -1,8 +1,0 @@
-#!/bin/sh
-echo "start mysql..."
-docker run -d\
-    -p 3306:3306\
-    -v /mnt/sda1/volumes/mysql:/var/lib/mysql\
-    -e MYSQL_ROOT_PASSWORD=rabbit\
-    --name mysql\
-    mysql

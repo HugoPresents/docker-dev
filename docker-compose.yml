@@ -1,0 +1,34 @@
+mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+        - "3306:3306"
+    volumes:
+        - /mnt/sda1/volumes/mysql:/var/lib/mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=rabbit
+
+php:
+    image: rabbit52/php-fpm
+    container_name: php
+    ports:
+        - "9000:9000"
+    volumes:
+        - ./var/log:/var/log
+        - ./.composer:/root/.composer
+        - ./usr/local/bin:/usr/local/bin
+        - ~/htdocs:/var/htdocs
+
+nginx:
+    image: rabbit52/nginx
+    container_name: nginx
+    ports:
+        - "80:80"
+        - "443:443"
+    volumes:
+        - ./etc/nginx/conf.d:/etc/nginx/conf.d
+        - ./etc/nginx/includes:/etc/nginx/includes
+        - ./etc/nginx/sites-available:/etc/nginx/sites-available
+        - ./etc/nginx/sites-enabled:/etc/nginx/sites-enabled
+        - ~/htdocs:/var/htdocs
+        - ./var/log/nginx:/var/log/nginx
