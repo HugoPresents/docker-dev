@@ -7,6 +7,7 @@ mysql:
         - /mnt/sda1/volumes/mysql:/var/lib/mysql
     environment:
         - MYSQL_ROOT_PASSWORD=rabbit
+    restart: always
 
 php:
     image: rabbit52/php-fpm
@@ -18,6 +19,7 @@ php:
         - ./.composer:/root/.composer
         - ./usr/local/bin:/usr/local/bin
         - ~/htdocs:/var/htdocs
+    restart: always
 
 nginx:
     image: rabbit52/nginx
@@ -32,3 +34,4 @@ nginx:
         - ./etc/nginx/sites-enabled:/etc/nginx/sites-enabled
         - ~/htdocs:/var/htdocs
         - ./var/log/nginx:/var/log/nginx
+    restart: always
