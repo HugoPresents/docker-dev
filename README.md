@@ -8,11 +8,12 @@ automated build at [docker hub](https://registry.hub.docker.com/u/rabbit52/ubunt
 
 for Chinese Developer
 
-## extra
+## images
 
 `images` directory is some images based on this image like `nginx`, `php-fpm`
 
 ## usage
-- executable under root directory are boot container which as name is, such as `redis`, `postgresql`
-- `build.sh` for build images
+- executable under root directory are boot container which as name is, such as `redis`, `postgres`
+- `make` command for build images
+- `docker-compose up` start nginx, mysql and php-fpm
 - empty directories are container depended volumes dir
