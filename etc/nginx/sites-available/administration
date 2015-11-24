@@ -1,0 +1,21 @@
+server {
+    server_name administration.tuzki.tff.com;
+    root /var/htdocs/tff-refactor/administration/public;
+    error_log /var/log/nginx/tff/administration.error.log;
+    index index.html index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ index\.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 192.168.99.100:9000;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+    }
+
+    location /design {
+        autoindex on;
+    }
+}
