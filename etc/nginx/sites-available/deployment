@@ -1,6 +1,6 @@
 server {
     server_name deploy.tuzki.tff.com;
-    root /var/htdocs/tff/service/go/deployment-full/statics;
+    root /var/htdocs/go/src/github.com/Tours4Fun/yiiservice/go/deployment/statics;
     error_log /var/log/nginx/tff/deployment.error.log;
 
     location / {
