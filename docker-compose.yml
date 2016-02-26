@@ -35,3 +35,10 @@ nginx:
         - ~/htdocs:/var/htdocs
         - ./var/log/nginx:/var/log/nginx
     restart: always
+
+redis:
+    image: redis
+    container_name: redis
+    ports:
+        - "6379:6379"
+    restart: always
