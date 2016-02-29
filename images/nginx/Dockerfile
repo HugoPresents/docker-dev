@@ -3,8 +3,8 @@ FROM rabbit52/ubuntu
 MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 # install packages
-RUN apt-get update &&\
-apt-get upgrade -y &&\
+RUN apt-get update && \
+apt-get upgrade -y && \
 apt-get install -y software-properties-common && \
 apt-add-repository -y ppa:nginx/stable && \
 apt-get update && \
