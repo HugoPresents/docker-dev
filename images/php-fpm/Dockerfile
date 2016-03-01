@@ -10,7 +10,8 @@ apt-get install -y software-properties-common && \
 apt-add-repository -y ppa:phalcon/stable && \
 apt-get update && \
 apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-dev php5-phalcon php5-pgsql libyaml-dev php5-memcached && \
-pecl install yaml
+pecl install yaml && \
+rm -rf /var/lib/apt/lists/*
 
 # connfiguration
 RUN sed -E -i "s/^listen.+?$/listen = 0.0.0.0:9000/" /etc/php5/fpm/pool.d/www.conf

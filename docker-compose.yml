@@ -10,7 +10,7 @@ mysql:
     restart: always
 
 php:
-    image: rabbit52/php-fpm
+    image: rabbit52/php:7-fpm
     container_name: php
     ports:
         - "9000:9000"
