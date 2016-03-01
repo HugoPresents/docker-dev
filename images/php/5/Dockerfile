@@ -23,6 +23,6 @@ sed -E -i "s/^error_reporting\ .+?$/error_reporting = E_ALL \& \~E_DEPRECATED \&
 RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
 
-EXPOSE 9001
+EXPOSE 9000
 
 CMD php5-fpm -F
