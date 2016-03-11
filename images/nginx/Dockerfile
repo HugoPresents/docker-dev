@@ -19,6 +19,6 @@ RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
 
 # access ports
-EXPOSE 80 443 8000 8001
+EXPOSE 80 443
 
 CMD nginx
