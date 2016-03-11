@@ -1,4 +1,5 @@
 server {
+    listen 8000 default_server;
     server_name ember.local;
     root /var/htdocs/ember/web/public;
     error_log /var/log/nginx/ember.error.log;

@@ -14,6 +14,8 @@ redis:
     container_name: redis
     ports:
         - "6379:6379"
+    volumes:
+        - /mnt/sda1/volumes/redis:/data
     restart: always
 
 php:
@@ -37,6 +39,8 @@ nginx:
     ports:
         - "80:80"
         - "443:443"
+        - "8000:8000"
+        - "8001:8001"
     volumes:
         - ./etc/nginx/conf.d:/etc/nginx/conf.d
         - ./etc/nginx/includes:/etc/nginx/includes
