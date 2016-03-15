@@ -11,12 +11,10 @@ apt-get update && \
 apt-get install -y nginx nginx-extras && \
 rm -rf /var/lib/apt/lists/*
 
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-
-RUN mkdir /etc/nginx/includes
-
-RUN mkdir /var/htdocs
-RUN chown -R www-data:www-data /var/htdocs
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf && \
+mkdir /etc/nginx/includes && \
+mkdir /var/htdocs && \
+chown -R www-data:www-data /var/htdocs
 
 # access ports
 EXPOSE 80 443
