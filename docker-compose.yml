@@ -16,6 +16,8 @@ redis:
         - "6379:6379"
     volumes:
         - /mnt/sda1/volumes/redis:/data
+        - ./etc/redis/redis.conf:/etc/redis.conf
+    command: ["redis-server", "/etc/redis.conf"]
     restart: always
 
 php:
