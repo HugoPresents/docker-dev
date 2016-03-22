@@ -1,0 +1,18 @@
+server {
+    server_name ember.local;
+    root /var/htdocs/ember/web/public;
+    error_log /var/log/nginx/ember.error.log;
+
+    index index.html index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ index\.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+    }
+}
