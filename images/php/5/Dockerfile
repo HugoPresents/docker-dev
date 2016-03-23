@@ -14,7 +14,9 @@ sed -E -i "s/^pm\ =.+?$/pm = ondemand/" /etc/php5/fpm/pool.d/www.conf && \
 sed -E -i "s/^pm\.max_children\ =.+?$/pm\.max_children = 10/" /etc/php5/fpm/pool.d/www.conf && \
 sed -E -i "s/^;pm\.process_idle_timeout\ =.+?$/pm\.process_idle_timeout=10s/" /etc/php5/fpm/pool.d/www.conf && \
 sed -E -i "s/^post_max_size\ =.+?$/post_max_size = 100M/" /etc/php5/fpm/php.ini && \
-sed -E -i "s/^upload_max_filesize\ =.+?$/upload_max_filesize = 100M/" /etc/php5/fpm/php.ini
+sed -E -i "s/^upload_max_filesize\ =.+?$/upload_max_filesize = 100M/" /etc/php5/fpm/php.ini && \
+sed -E -i "s/^max_execution_time\ =.+?$/max_execution_time = 3/" /etc/php5/fpm/php.ini && \
+sed -E -i "s/^memory_limit\ =.+?$/memory_limit = 256M/" /etc/php5/fpm/php.ini
 
 # for development
 RUN sed -E -i "s/^display_errors\ .+?$/display_errors = On/" /etc/php5/fpm/php.ini && \
