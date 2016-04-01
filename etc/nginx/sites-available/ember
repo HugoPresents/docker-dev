@@ -1,6 +1,6 @@
 server {
     server_name ember.local;
-    root /var/htdocs/ember/web/public;
+    root /var/htdocs/ember/public;
     error_log /var/log/nginx/ember.error.log;
 
     index index.html index.php;
