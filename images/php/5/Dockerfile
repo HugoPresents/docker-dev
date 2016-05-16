@@ -22,6 +22,9 @@ sed -E -i "s/^memory_limit\ =.+?$/memory_limit = 256M/" /etc/php5/fpm/php.ini
 RUN sed -E -i "s/^display_errors\ .+?$/display_errors = On/" /etc/php5/fpm/php.ini && \
 sed -E -i "s/^error_reporting\ .+?$/error_reporting = E_ALL \& \~E_DEPRECATED \& \~E_STRICT \& \~E_NOTICE/" /etc/php5/fpm/php.ini
 
+# phpunit & composer
+COPY bin/* /usr/local/bin
+
 RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
 

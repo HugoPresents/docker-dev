@@ -34,7 +34,6 @@ php:
     volumes:
         - ./var/log:/var/log
         - ./.composer:/root/.composer
-        - ./usr/local/bin:/usr/local/bin
         - ~/htdocs:/var/htdocs
     environment:
         TZ: Asia/Chongqing
