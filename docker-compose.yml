@@ -6,7 +6,8 @@ mysql:
     volumes:
         - /mnt/sda1/volumes/mysql:/var/lib/mysql
     environment:
-        - MYSQL_ROOT_PASSWORD=rabbit
+        MYSQL_ROOT_PASSWORD: rabbit
+        TZ: Asia/Chongqing
     restart: always
 
 redis:
@@ -18,6 +19,8 @@ redis:
         - /mnt/sda1/volumes/redis:/data
         - ./etc/redis/redis.conf:/etc/redis.conf
     command: ["redis-server", "/etc/redis.conf"]
+    environment:
+        TZ: Asia/Chongqing
     restart: always
 
 php:
@@ -33,10 +36,12 @@ php:
         - ./.composer:/root/.composer
         - ./usr/local/bin:/usr/local/bin
         - ~/htdocs:/var/htdocs
+    environment:
+        TZ: Asia/Chongqing
     restart: always
 
 nginx:
-    image: rabbit52/nginx
+    image: nginx
     container_name: nginx
     links:
         - php
@@ -46,8 +51,9 @@ nginx:
     volumes:
         - ./etc/nginx/conf.d:/etc/nginx/conf.d
         - ./etc/nginx/includes:/etc/nginx/includes
-        - ./etc/nginx/sites-available:/etc/nginx/sites-available
-        - ./etc/nginx/sites-enabled:/etc/nginx/sites-enabled
+        - ./etc/nginx/sites:/etc/nginx/sites
         - ~/htdocs:/var/htdocs
         - ./var/log/nginx:/var/log/nginx
+    environment:
+        TZ: Asia/Chongqing
     restart: always

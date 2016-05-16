@@ -1,5 +1,5 @@
 # VERSION 0.0.1
-FROM rabbit52/ubuntu
+FROM ubuntu
 MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 # install packages
