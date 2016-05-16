@@ -23,7 +23,9 @@ RUN sed -E -i "s/^display_errors\ .+?$/display_errors = On/" /etc/php5/fpm/php.i
 sed -E -i "s/^error_reporting\ .+?$/error_reporting = E_ALL \& \~E_DEPRECATED \& \~E_STRICT \& \~E_NOTICE/" /etc/php5/fpm/php.ini
 
 # phpunit & composer
-COPY bin/* /usr/local/bin
+ADD https://phar.phpunit.de/phpunit.phar /usr/local/bin/phpunit
+ADD https://getcomposer.org/download/1.1.0/composer.phar /usr/loca/bin/composer
+RUN chmod +x /usr/local/bin/phpunit /usr/loca/bin/composer
 
 RUN mkdir /var/htdocs
 RUN chown -R www-data:www-data /var/htdocs
