@@ -1,5 +1,5 @@
 # VERSION 0.0.1
-FROM ubuntu
+FROM ubuntu:14.04
 MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 # install packages
