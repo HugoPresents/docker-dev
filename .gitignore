@@ -8,3 +8,4 @@
 !/var/log/nginx/tff
 !/var/log/nginx
 !/var/log/mysql
+docker-compose.yml
