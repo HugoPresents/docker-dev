@@ -4,7 +4,7 @@ mysql:
     ports:
         - "3306:3306"
     volumes:
-        - /mnt/sda1/volumes/mysql:/var/lib/mysql
+        - d:/devel/volumes/mysql:/var/lib/mysql
     environment:
         MYSQL_ROOT_PASSWORD: rabbit
         TZ: Asia/Chongqing
@@ -16,9 +16,9 @@ redis:
     ports:
         - "6379:6379"
     volumes:
-        - /mnt/sda1/volumes/redis:/data
-        - ./etc/redis/redis.conf:/etc/redis.conf
-    command: ["redis-server", "/etc/redis.conf"]
+        - d:/devel/volumes/redis:/data
+        - ./etc/redis:/opt/redis
+    command: ["redis-server", "/opt/redis/redis.conf"]
     environment:
         TZ: Asia/Chongqing
     restart: always
@@ -32,7 +32,7 @@ php:
     volumes:
         - ./var/log:/var/log
         - ./.composer:/root/.composer
-        - ~/htdocs:/var/htdocs
+        - d:/htdocs:/var/htdocs
     environment:
         TZ: Asia/Chongqing
     restart: always
@@ -49,7 +49,7 @@ nginx:
         - ./etc/nginx/conf.d:/etc/nginx/conf.d
         - ./etc/nginx/includes:/etc/nginx/includes
         - ./etc/nginx/sites:/etc/nginx/sites
-        - ~/htdocs:/var/htdocs
+        - d:/htdocs:/var/htdocs
         - ./var/log/nginx:/var/log/nginx
     environment:
         TZ: Asia/Chongqing
