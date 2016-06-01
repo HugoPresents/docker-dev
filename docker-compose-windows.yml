@@ -33,6 +33,7 @@ php:
         - ./var/log:/var/log
         - ./.composer:/root/.composer
         - d:/htdocs:/var/htdocs
+    working_dir: /var/htdocs
     environment:
         TZ: Asia/Chongqing
     restart: always
@@ -51,6 +52,7 @@ nginx:
         - ./etc/nginx/sites:/etc/nginx/sites
         - d:/htdocs:/var/htdocs
         - ./var/log/nginx:/var/log/nginx
+    working_dir: /var/htdocs
     environment:
         TZ: Asia/Chongqing
     restart: always
