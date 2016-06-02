@@ -28,7 +28,7 @@ ADD https://getcomposer.org/download/1.1.2/composer.phar /usr/local/bin/composer
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /usr/local/bin/phpunit /usr/local/bin/composer /entrypoint.sh && \
-mkdir /var/htdocschown && \
+mkdir /var/htdocs && \
 chown -R www-data:www-data /var/htdocs
 
 WORKDIR /var/htdocs
