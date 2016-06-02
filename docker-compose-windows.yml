@@ -33,6 +33,7 @@ php:
         - ./var/log:/var/log
         - ./.composer:/root/.composer
         - d:/htdocs:/var/htdocs
+        - d:/Nutstore/Backups/ssh:/root/ssh-outside
     working_dir: /var/htdocs
     environment:
         TZ: Asia/Chongqing

@@ -25,11 +25,15 @@ sed -E -i "s/^error_reporting\ .+?$/error_reporting = E_ALL \& \~E_DEPRECATED \&
 # phpunit & composer
 ADD https://phar.phpunit.de/phpunit.phar /usr/local/bin/phpunit
 ADD https://getcomposer.org/download/1.1.2/composer.phar /usr/local/bin/composer
-RUN chmod +x /usr/local/bin/phpunit /usr/local/bin/composer
 
-RUN mkdir /var/htdocs
-RUN chown -R www-data:www-data /var/htdocs
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /usr/local/bin/phpunit /usr/local/bin/composer /entrypoint.sh && \
+mkdir /var/htdocschown && \
+chown -R www-data:www-data /var/htdocs
+
+WORKDIR /var/htdocs
+ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 9000
 
-CMD php5-fpm -F
+CMD ["php5-fpm", "-F"]
