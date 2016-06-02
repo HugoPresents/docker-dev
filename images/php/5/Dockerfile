@@ -5,7 +5,7 @@ MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 # install packages
 RUN apt-get update && \
 apt-get upgrade -y && \
-apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-pgsql php5-memcached && \
+apt-get install -y php5-fpm php5-curl php5-mysqlnd php5-mcrypt php5-gd php5-pgsql php5-memcached git && \
 rm -rf /var/lib/apt/lists/*
 
 # connfiguration
