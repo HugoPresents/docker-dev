@@ -35,6 +35,7 @@ php:
         - ~/htdocs:/var/htdocs
     environment:
         TZ: Asia/Chongqing
+        REDIS_PORT: 6379
     restart: always
 
 nginx:
