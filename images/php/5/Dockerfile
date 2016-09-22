@@ -28,7 +28,7 @@ sed -E -i "s/^error_reporting\ .+?$/error_reporting = E_ALL \& \~E_DEPRECATED \&
 
 # phpunit & composer
 ADD https://phar.phpunit.de/phpunit.phar /usr/local/bin/phpunit
-ADD https://getcomposer.org/download/1.1.2/composer.phar /usr/local/bin/composer
+ADD https://getcomposer.org/composer.phar /usr/local/bin/composer
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /usr/local/bin/phpunit /usr/local/bin/composer /entrypoint.sh && \
