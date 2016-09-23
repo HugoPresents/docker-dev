@@ -11,7 +11,7 @@ mysql:
     restart: always
 
 redis:
-    image: redis
+    image: redis:alpine
     container_name: redis
     ports:
         - "6379:6379"
@@ -24,7 +24,7 @@ redis:
     restart: always
 
 php:
-    image: rabbit52/php
+    image: daocloud.io/rabbit_52/php7
     container_name: php
     links:
         - mysql
@@ -33,7 +33,7 @@ php:
         - ./var/log:/var/log
         - ./.composer:/root/.composer
         - d:/htdocs:/var/htdocs
-        - d:/Nutstore/Backups/ssh:/root/ssh-outside
+        - d:/Dropbox/Backups/ssh:/root/ssh-outside
     working_dir: /var/htdocs
     environment:
         TZ: Asia/Chongqing
@@ -41,7 +41,7 @@ php:
     restart: always
 
 nginx:
-    image: nginx
+    image: nginx:alpine
     container_name: nginx
     links:
         - php
