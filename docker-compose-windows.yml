@@ -4,7 +4,7 @@ mysql:
     ports:
         - "3306:3306"
     volumes:
-        - d:/devel/volumes/mysql:/var/lib/mysql
+        - d:/docker/volumes/mysql:/var/lib/mysql
     environment:
         MYSQL_ROOT_PASSWORD: rabbit
         TZ: Asia/Chongqing
@@ -16,7 +16,7 @@ redis:
     ports:
         - "6379:6379"
     volumes:
-        - d:/devel/volumes/redis:/data
+        - d:/docker/volumes/redis:/data
         - ./etc/redis:/opt/redis
     command: ["redis-server", "/opt/redis/redis.conf"]
     environment:
