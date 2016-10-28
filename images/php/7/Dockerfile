@@ -4,7 +4,7 @@ MAINTAINER Tuzki Zhang<rabbitzhang52@gmail.com>
 
 # install packages
 RUN apt-get update && \
-apt-get install -y php-fpm php-curl php-mysqlnd php-mcrypt php-gd php-pgsql php-memcached php-mbstring php-xml git && \
+apt-get install -y php-fpm php-curl php-mysqlnd php-mcrypt php-gd php-pgsql php-memcached php-mbstring php-xml php-zip git && \
 rm -rf /var/lib/apt/lists/*
 
 # connfiguration
