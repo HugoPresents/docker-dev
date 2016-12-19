@@ -1,9 +1,0 @@
-#!/bin/sh
-echo "start postgres..."
-docker run -d\
-    -p 5432:5432\
-    -e POSTGRES_PASSWORD=rabbit\
-    -v /mnt/sda1/volumes/postgresql:/var/lib/postgresql/data\
-    --name postgres\
-    postgres
-

@@ -4,11 +4,22 @@ mysql:
     ports:
         - "3306:3306"
     volumes:
-        - /Users/rabbit/Devel/dev/volumes/mysql:/var/lib/mysql
+        - ~/docker/volumes/dev/mysql:/var/lib/mysql
     environment:
         MYSQL_ROOT_PASSWORD: rabbit
         TZ: Asia/Chongqing
     restart: always
+
+postgres:
+    image: postgres:alpine
+    container_name: postgres
+    ports:
+        - "5432:5432"
+    volumes:
+        - ~/docker/volumes/dev/postgres:/var/lib/postgresql/data
+    environment:
+        POSTGRES_PASSWORD: rabbit
+        POSTGRES_USER: root
 
 redis:
     image: redis:alpine
@@ -16,7 +27,7 @@ redis:
     ports:
         - "6379:6379"
     volumes:
-        - /Users/rabbit/Devel/dev/volumes/redis:/data
+        - ~/docker/volumes/dev/redis:/data
         - ./etc/redis/redis.conf:/etc/redis.conf
     command: ["redis-server", "/etc/redis.conf"]
     environment:
@@ -29,6 +40,7 @@ php:
     links:
         - mysql
         - redis
+        - postgres
     volumes:
         - ./var/log:/var/log
         - ./.composer:/root/.composer
