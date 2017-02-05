@@ -5,7 +5,8 @@ MAINTAINER Hugo Zhang<rabbitzhang52@gmail.com>
 # install packages
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
 apk add --no-cache php7 php7-fpm php7-pdo_mysql php7-zip php7-mcrypt php7-phar php7-gd php7-curl php7-mysqlnd php7-xml php7-pdo_pgsql \
-php7-pgsql php7-mbstring git openssh openssl php7-gettext php7-json php7-dom php7-iconv php7-openssl php7-ctype php7-apcu php7-pdo && \
+php7-pgsql php7-mbstring git openssh openssl php7-gettext php7-json php7-dom php7-iconv php7-openssl php7-ctype php7-apcu php7-pdo \
+php7-session && \
 sed -E -i "s/^listen\ =.+?$/listen = 0.0.0.0:9000/" /etc/php7/php-fpm.d/www.conf && \
 sed -E -i "s/^pm\ =.+?$/pm = ondemand/" /etc/php7/php-fpm.d/www.conf && \
 sed -E -i "s/^pm\.max_children\ =.+?$/pm\.max_children = 2/" /etc/php7/php-fpm.d/www.conf && \
