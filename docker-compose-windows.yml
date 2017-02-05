@@ -34,7 +34,7 @@ redis:
     restart: always
 
 php:
-    image: daocloud.io/rabbit_52/php7
+    image: daocloud.io/rabbit_52/php
     container_name: php
     links:
         - mysql

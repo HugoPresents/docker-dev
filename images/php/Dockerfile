@@ -15,6 +15,7 @@ sed -E -i "s/^post_max_size\ =.+?$/post_max_size = 100M/" /etc/php7/php.ini && \
 sed -E -i "s/^upload_max_filesize\ =.+?$/upload_max_filesize = 100M/" /etc/php7/php.ini && \
 sed -E -i "s/^display_errors\ .+?$/display_errors = On/" /etc/php7/php.ini && \
 sed -E -i "s/^error_reporting\ .+?$/error_reporting = E_ALL/" /etc/php7/php.ini && \
+ln -s /usr/bin/php7 /usr/bin/php && \
 mkdir /var/run/php
 
 # phpunit & composer
