@@ -2,12 +2,6 @@
 FROM alpine
 MAINTAINER Hugo Zhang<rabbitzhang52@gmail.com>
 
-# ensure www-data user exists
-RUN set -x \
-    && addgroup -g 82 -S www-data \
-    && adduser -u 82 -D -S -G www-data www-data
-# 82 is the standard uid/gid for "www-data" in Alpine
-
 # install packages
 RUN addgroup -g 82 -S www-data \
     && adduser -u 82 -D -S -G www-data www-data \
