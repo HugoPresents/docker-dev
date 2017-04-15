@@ -1,68 +1,72 @@
-mysql:
-    image: mysql
-    container_name: mysql
-    ports:
-        - "3306:3306"
-    volumes:
-        - ~/docker/volumes/dev/mysql:/var/lib/mysql
-    environment:
-        MYSQL_ROOT_PASSWORD: rabbit
-        TZ: Asia/Chongqing
-    restart: always
+version: '3'
 
-postgres:
-    image: postgres:alpine
-    container_name: postgres
-    ports:
-        - "5432:5432"
-    volumes:
-        - ~/docker/volumes/dev/postgres:/var/lib/postgresql/data
-    environment:
-        POSTGRES_USER: postgres
+services:
+    mysql:
+        image: mysql
+        container_name: mysql
+        ports:
+            - "3306:3306"
+        volumes:
+            - ~/docker/volumes/dev/mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: rabbit
+            TZ: Asia/Chongqing
+        restart: always
 
-redis:
-    image: redis:alpine
-    container_name: redis
-    ports:
-        - "6379:6379"
-    volumes:
-        - ~/docker/volumes/dev/redis:/data
-        - ./etc/redis/redis.conf:/etc/redis.conf
-    command: ["redis-server", "/etc/redis.conf"]
-    environment:
-        TZ: Asia/Chongqing
-    restart: always
+    postgres:
+        image: postgres:alpine
+        container_name: postgres
+        ports:
+            - "5432:5432"
+        volumes:
+            - ~/docker/volumes/dev/postgres:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: postgres
 
-php:
-    image: daocloud.io/rabbit_52/php
-    container_name: php
-    links:
-        - mysql
-        - redis
-        - postgres
-    volumes:
-        - ./var/log:/var/log
-        - ./.composer:/root/.composer
-        - ~/htdocs:/var/htdocs
-    environment:
-        TZ: Asia/Chongqing
-        REDIS_PORT: 6379
-    restart: always
+    redis:
+        image: redis:alpine
+        container_name: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - ~/docker/volumes/dev/redis:/data
+            - ./etc/redis/redis.conf:/etc/redis.conf:ro
+        command: ["redis-server", "/etc/redis.conf"]
+        environment:
+            TZ: Asia/Chongqing
+        restart: always
 
-nginx:
-    image: nginx:alpine
-    container_name: nginx
-    links:
-        - php
-    ports:
-        - "80:80"
-        - "443:443"
-    volumes:
-        - ./etc/nginx/conf.d:/etc/nginx/conf.d
-        - ./etc/nginx/includes:/etc/nginx/includes
-        - ./etc/nginx/sites:/etc/nginx/sites
-        - ~/htdocs:/var/htdocs
-        - ./var/log/nginx:/var/log/nginx
-    environment:
-        TZ: Asia/Chongqing
-    restart: always
+    php:
+        image: daocloud.io/rabbit_52/php
+        container_name: php
+        links:
+            - mysql
+            - redis
+            - postgres
+        volumes:
+            - ./etc/php.development.ini:/usr/local/etc/php/php.ini:ro
+            - ./var/log:/var/log
+            - ./.composer:/root/.composer
+            - ~/htdocs:/var/htdocs
+        environment:
+            TZ: Asia/Chongqing
+            REDIS_PORT: 6379
+        restart: always
+
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        links:
+            - php
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./etc/nginx/conf.d:/etc/nginx/conf.d:ro
+            - ./etc/nginx/includes:/etc/nginx/includes:ro
+            - ./etc/nginx/sites:/etc/nginx/sites:ro
+            - ~/htdocs:/var/htdocs
+            - ./var/log/nginx:/var/log/nginx
+        environment:
+            TZ: Asia/Chongqing
+        restart: always
