@@ -1,0 +1,17 @@
+FROM php:alpine
+
+COPY swoole-v2.0.7.tar.gz /
+
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
+    && apk add --update --no-cache openssl git libmcrypt libpq libpng jpeg freetype \
+    && apk add --no-cache --virtual .build-deps linux-headers autoconf make gcc libc-dev libmcrypt-dev postgresql-dev libpng-dev freetype-dev jpeg-dev \
+    && docker-php-ext-install mcrypt pdo_pgsql pdo_mysql zip opcache session gd \
+    && cd / && tar -xf swoole-v2.0.7.tar.gz && cd swoole-src-2.0.7 \
+    && phpize && ./configure && make -j`grep -c ^processor /proc/cpuinfo` && make install && docker-php-ext-enable swoole \
+    && mkdir /var/htdocs \
+    && apk del .build-deps && rm -rf /swoole-src-2.0.7
+
+VOLUME /var/htdocs
+WORKDIR /var/htdocs
+
+CMD ["php", "-a"]

@@ -1,5 +1,8 @@
 build:
-	docker build -t rabbit52/php:7-fpm .
+	docker build -t daocloud.io/rabbit_52/php .
+
+swoole:
+	docker build -t daocloud.io/rabbit_52/php:swoole -f Dockerfile.swoole .
 
 clean:
-	docker rmi rabbit52/php:7-fpm
+	docker rmi daocloud.io/rabbit_52/php
