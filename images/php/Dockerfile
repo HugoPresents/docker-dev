@@ -1,6 +1,6 @@
 FROM php:fpm-alpine
 
-RUN sed -i 's/www-data:x:82:82/www-data:x:33:33/' /etc/passwd \
+RUN sed -i 's/www-data:x:82:82/www-data:x:1000:1000/' /etc/passwd \
     && apk add --update --no-cache openssl git libmcrypt libpq libpng jpeg freetype \
     && apk add --no-cache --virtual .build-deps libmcrypt-dev postgresql-dev libpng-dev freetype-dev jpeg-dev \
     && docker-php-ext-install mcrypt pdo_pgsql pdo_mysql zip opcache session gd \
